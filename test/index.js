@@ -1,6 +1,7 @@
 var TokenStore = require('../'),
     fs = require('fs'),
-    dbFile = __dirname + '/test.db', Token;
+    dbFile = __dirname + '/test.db',
+    Token;
 
 
 var standardTests = require('passwordless-tokenstore-test');
@@ -17,14 +18,9 @@ var beforeEachTest = function(done) {
       }
   });
 
-  var bookshelf = require('bookshelf')(knex);
+  Token = knex;
 
-  Token = bookshelf.Model.extend({
-      tableName: 'tokens'
-  });
-
-
-  knex.schema.createTable('tokens', function(table) {
+  knex.schema.createTable('passwordless', function(table) {
     table.increments('id').primary();
     table.string('token').unique();
     table.string('uid').unique();
