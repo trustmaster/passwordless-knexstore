@@ -44,6 +44,12 @@ var KnexStore = require('passwordless-knexstore');
 passwordless.init(new KnexStore(knex));
 ```
 
+You can pass a custom table name in the KnexStore options:
+
+```js
+passwordless.init(new KnexStore(knex, {table: 'randtokens'}));
+```
+
 Author
 ------
 
